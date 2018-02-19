@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--Materialize Css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col l12">
+                    <center>
+                        <h1>FLASH BITÁCORA</h1>
+                    </center>
+                    <center>
+                        <span>"Publish anything, just in your browser"</span>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col l12">
+                    <div id="post" class="post"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Modal Structure POST -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col offset-l4 post-header">
+                    <input type="text" name="" value="" placeholder="Title" class="title post-header">
+                </div>
+            </div>
+            <textarea name="text" id="texto" class="text-area-height" placeholder="¿Qué estas pensando?" type="text" autofocus></textarea>
+            <hr>
+        </div>
+        <div class="modal-footer">
+            <a id="btn-post" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat teal darken-1 white-text"><i class="material-icons right">send</i>Public</a>
+        </div>
+    </div>
+    <footer>
+        <div class="fixed-action-btn horizontal">
+            <a class="btn-floating btn-large red">
+                <i class="large material-icons">mode_edit</i>
+            </a>
+            <ul>
+                <li>
+                    <a class="btn-floating red waves-effect waves-light modal-trigger" href="#modal1">
+                        <i class="material-icons">chat</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-floating yellow darken-1">
+                        <i class="material-icons">perm_media</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-floating green">
+                        <i class="material-icons">today</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-floating blue">
+                        <i class="material-icons">video_library</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <!--jQuery-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!--Materialize Js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
