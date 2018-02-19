@@ -36,19 +36,47 @@
             </div>
         </div>
     </main>
-    <!-- Modal Structure POST -->
+    <!-- Modal Structure POST-->
     <div id="modal1" class="modal">
         <div class="modal-content">
             <div class="row">
                 <div class="col offset-l4 post-header">
-                    <input type="text" name="" value="" placeholder="Title" class="title post-header">
+                    <input type="text" name="" value="" placeholder="Title" class="title post-header" autofocus>
                 </div>
             </div>
-            <textarea name="text" id="texto" class="text-area-height" placeholder="¿Qué estas pensando?" type="text" autofocus></textarea>
+            <textarea name="text" id="texto" class="text-area-height" placeholder="¿Qué estas pensando?" type="text"></textarea>
             <hr>
         </div>
         <div class="modal-footer">
-            <a id="btn-post" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat teal darken-1 white-text"><i class="material-icons right">send</i>Public</a>
+            <a id="btn-post" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat teal darken-1 white-text">
+                <i class="material-icons right">send</i>Public</a>
+        </div>
+    </div>
+    <!-- Modal Structure IMAGE-->
+    <div id="modal2" class="modal">
+        <div class="modal-content modal-photo">
+            <div class="center">
+                <h6>Elige la imagen que deseas publicar</h6>
+            </div>
+            <form action="#">
+                <div class="file-field input-field">
+                    <div class="btn light-green accent-3">
+                        <i class="material-icons">linked_camera</i>
+                        <input id="file-select" type="file" multiple>
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Change your photo">
+                    </div>
+                </div>
+            </form>
+            <figure class="center">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4="
+                    alt="Previsualizacion Imagen" id="img-guardar" class="responsive-img post-img">
+            </figure>
+            <div class="right col s3">
+                <a id="btn-img" class="modal-action modal-close waves-effect waves-green btn-flat green white-text">
+                    <i class="material-icons right">send</i>Public</a>
+            </div>
         </div>
     </div>
     <footer>
@@ -63,7 +91,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="btn-floating yellow darken-1">
+                    <a class="btn-floating yellow darken-1 waves-effect waves-light modal-trigger" href="#modal2">
                         <i class="material-icons">perm_media</i>
                     </a>
                 </li>
