@@ -41,7 +41,7 @@ $('#post-modal').on('click', () => {
 // Post de text
 function post() {
     const postEstructure = `<div class="styleBox z-depth-5 col l5 m4 s10 offset-s1">
-    <div class="title-post"><h5 class="center-align">${$('.post-header input').val()}</h5></div>
+    <div class="title"><h5 class="center-align">${$('.post-header input').val()}</h5></div>
     <div class="styleLetter"><p class="styleLetterP">${$('#texto').val()}</p></div>
     <div class="right-align"><span class="styleLetter">${timeDate()}</span></div>
     </div>`;
@@ -56,7 +56,7 @@ $('#btn-post').on('click', post);
 function image() {
     let imagen = $("#img-guardar");
 
-    const imgEstructure = `<div class="styleBox title-post z-depth-5 col l5 m4 s10 offset-s1">
+    const imgEstructure = `<div class="styleBox title z-depth-5 col l5 m4 s10 offset-s1">
     <h5 class="center-align">${$('#title-img').val()}</h5>
     <img src="${imagen[0].src}" class="col l12 s12"></img>
     <div class="right-align"><span class="styleLetter">${timeDate()}</span></div>
