@@ -1,17 +1,35 @@
+* {
+  font-family: 'Mukta Mahee', sans-serif;
+}
+
+.title {
+    color: #12a9b0;
+}
+
+.subTitle {
+  color: lightcoral;
+}
+
+.btn1 {
+  background-color: #d3215d;
+}
+
+.bold {
+  font-weight: bolder;
+}
+
 .post {
     width: 100%;
 }
 
 .styleBox {
   background-color: white;
-  width: 250px;
   height: auto;
   border-radius: 10px;
   box-sizing: border-box;
   padding: 10px;
-  border: 2px solid #055;
-  margin: 5px;
   display: inline-block;
+  margin: 1rem;
 }
   
 .post-img {
@@ -34,4 +52,9 @@
   
 .text-area-height {
   height: 5rem;
+}
+
+.height {
+  height: 70%;
+  min-height: 80%;
 }
