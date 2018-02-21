@@ -20,9 +20,10 @@ const timeDate = () => {
 //Modal post
 $('#post-modal').on('click', () => {
     $('#post-modal').addClass('waves-effect waves-light modal-trigger');
+    $('.modal').removeClass('height');
 
     const modalPostContent = `<div class="row">
-        <div class="col offset-l4 post-header">
+        <div class="col offset-l4 offset-s2 post-header">
             <input type="text" name="" value="" placeholder="Title" class="title post-header" autofocus>
         </div>
         <textarea name="text" id="texto" class="text-area-height" placeholder="¿Qué estas pensando?" type="text"></textarea>
@@ -39,8 +40,8 @@ $('#post-modal').on('click', () => {
 
 // Post de text
 function post() {
-    const postEstructure = `<div class="styleBox z-depth-5 col l5">
-    <div class="title"><h5 class="center-align">${$('.post-header input').val()}</h5></div>
+    const postEstructure = `<div class="styleBox z-depth-5 col l5 m4 s10 offset-s1">
+    <div class="title-post"><h5 class="center-align">${$('.post-header input').val()}</h5></div>
     <div class="styleLetter"><p class="styleLetterP">${$('#texto').val()}</p></div>
     <div class="right-align"><span class="styleLetter">${timeDate()}</span></div>
     </div>`;
@@ -55,8 +56,9 @@ $('#btn-post').on('click', post);
 function image() {
     let imagen = $("#img-guardar");
 
-    const imgEstructure = `<div class="styleBox z-depth-5 col l5">
-    <img src="${imagen[0].src}" class="co l12"></img>
+    const imgEstructure = `<div class="styleBox title-post z-depth-5 col l5 m4 s10 offset-s1">
+    <h5 class="center-align">${$('#title-img').val()}</h5>
+    <img src="${imagen[0].src}" class="col l12 s12"></img>
     <div class="right-align"><span class="styleLetter">${timeDate()}</span></div>
     </div>`;
     $('#post').prepend(imgEstructure);
@@ -76,8 +78,10 @@ function previewImage() {
 $('#img-modal').on('click', function () {
     $('#img-modal').addClass('waves-effect waves-light modal-trigger');
     $('.modal').addClass('modal-photo');
+    $('.modal').removeClass('height');
+
     const modalImgContent = `<div class="center">
-                                <h6>Elige la imagen que deseas publicar</h6>
+                                 <input id ="title-img" type="text" name="" value="" placeholder="Título  de la imagen que deseas publicar" class="title post-header" autofocus>
                             </div>
                             <form action="#">
                                 <div class="file-field input-field">
@@ -105,6 +109,8 @@ $('#img-modal').on('click', function () {
     $('input[type=file]').change(previewImage);
     $('#btn-img').on('click', image);
 });
+
+
 //Post de Date
 function date() {
 
@@ -182,4 +188,101 @@ $('#date-modal').on('click', function () {
         aftershow: function () { } //Function for after opening timepicker
     });
     $('#btn-date').on('click', date);
+});
+
+function clearInput() {
+    localStorage.url = '';
+    $('.file-path').val('');
+    localStorage.type = '';
+}
+
+function playAudioAndVideo(file, type) {
+    url = URL.createObjectURL(file);
+    localStorage.url = url;
+    localStorage.type = type;
+}
+
+function format() {
+    let fileMA = this.files[0];
+    let type;
+
+    if (fileMA.type.match('audio.*')) {
+        type = 'audio';
+        playAudioAndVideo(fileMA, type);
+    } else if (fileMA.type.match('video.*')) {
+        type = 'video';
+        playAudioAndVideo(fileMA, type);
+    } else {
+        alert('Solo se permite formatos de audio y video');
+    }
+};
+
+// Post de Video
+function videoAudio() {
+    let urlAV = localStorage.url;
+    let typeFile = localStorage.type;
+    let estructureAV;
+    if (urlAV) {
+        if (typeFile === 'video') {
+            estructureAV = ` <div class="styleBox col l5 center-align z-depth-5">
+        <div class="col s12 m12">
+          <div class="card">
+            <div class="card-image">
+            <video class="responsive-video" src="${url}" controls></video>
+            </div>
+            <div class="card-content title-post">
+              <h5 class="title">${$('input#title-video').val()}</h5>
+            </div>
+            <span class="styleLetter">${timeDate()}</span>
+          </div>
+        </div>
+      </div>`;
+        }
+        if (typeFile === 'audio') {
+            estructureAV = ` <div class="styleBox col l5 s10 offset-s1 center-align z-depth-5">
+        <div class="col s12 m12">
+          <div class="card">
+          <div class="card-content title-post">
+              <h5 class="title">${$('input#title-video').val()}</h5>
+            </div>
+            <div class="card-image">
+            <audio class="col s12 m12" src="${url}" controls></audio>
+            </div>
+            <span class="styleLetter">${timeDate()}</span>
+          </div>
+        </div>
+      </div>`;
+        }
+        $('#post').prepend(estructureAV);
+    }
+    clearInput();
+};
+
+//Modal video
+$('#video-modal').on('click', function () {
+    $('#video-modal').addClass('waves-effect waves-light modal-trigger');
+    $('.modal').removeClass('height');
+
+    const modalVideoContent = `<div class="center">
+                                    <input id="title-video" type="text" name="" value="" placeholder="Title of video and audio" class="title post-header" autofocus>
+                                </div>
+                                <form action="#">
+                                    <div class="file-field input-field">
+                                        <div class="btn light-green accent-3">
+                                            <i class="material-icons">linked_camera</i>
+                                            <input id="file-select-video" type="file" multiple>
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" placeholder="Change your video">
+                                        </div>
+                                    </div>
+                                </form>`;
+
+    const modalVideoFooter = `<a id="btn-video" class="modal-action modal-close waves-effect waves-green btn-flat green white-text">
+    <i class="material-icons right">send</i>Public</a>`;
+
+    $('.modal-content').html(modalVideoContent);
+    $('.modal-footer').html(modalVideoFooter);
+    $('#file-select-video').change(format);
+    $('#btn-video').on('click', videoAudio);
 });
